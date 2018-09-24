@@ -20,6 +20,7 @@ set list
 set listchars=tab:>·,trail:~,extends:>,precedes:<
 
 map <Leader>o ¯\_(ツ)_/¯
+imap jk <Esc>
 map <Leader>r :%s//gc<Left><Left><Left>
 vmap <Leader>r :s//gc<Left><Left><Left>
 
