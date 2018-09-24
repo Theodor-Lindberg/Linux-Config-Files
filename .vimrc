@@ -19,10 +19,21 @@ set relativenumber
 set list
 set listchars=tab:>·,trail:~,extends:>,precedes:<
 
-map <Leader>o ¯\_(ツ)_/¯
 imap jk <Esc>
 map <Leader>r :%s//gc<Left><Left><Left>
 vmap <Leader>r :s//gc<Left><Left><Left>
 
 map j gj
 map k gk
+
+command Diff :w !diff % -
+
+function! DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+nmap <Leader>d : call DiffWithSaved()<cr>
+nmap <Leader>q :diffoff!<cr>:q<cr>
