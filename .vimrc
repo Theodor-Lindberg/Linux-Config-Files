@@ -12,7 +12,7 @@ set shiftwidth=4    " Indents will have a width of 4
 
 set softtabstop=4   " Sets the number of columns for a TAB
 
-set expandtab       " Expand TABs to spaces
+"set expandtab       " Expand TABs to spaces
 set mouse=a
 set relativenumber
 
@@ -26,14 +26,4 @@ vmap <Leader>r :s//gc<Left><Left><Left>
 map j gj
 map k gk
 
-command Diff :w !diff % -
-
-function! DiffWithSaved()
-  let filetype=&ft
-  diffthis
-  vnew | r # | normal! 1Gdd
-  diffthis
-  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
-endfunction
-nmap <Leader>d : call DiffWithSaved()<cr>
-nmap <Leader>q :diffoff!<cr>:q<cr>
+nmap <Leader>q ::q<cr>
